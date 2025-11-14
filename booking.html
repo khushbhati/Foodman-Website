@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodMan | Reservation</title>
+
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Inline Style for Contact Section -->
+  <style>
+    .contact {
+      padding: 5rem 0;
+      background-color: #f8f9fa;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-form h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #2c3e50;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #e74c3c;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #c0392b;
+    }
+
+    #formStatus {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="section-title">Make a Reservation</h2>
+
+    <!-- Reservation Form -->
+    <div class="contact-form">
+      <form id="reservationForm">
+        <div class="form-group">
+          <label for="name">Full Name:</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <input id="phone" name="phone" type="tel" required />
+        </div>
+
+        <div class="form-group">
+          <label for="date">Reservation Date:</label>
+          <input id="date" name="date" type="date" required />
+        </div>
+
+        <div class="form-group">
+          <label for="time">Time:</label>
+          <select id="time" name="time" required>
+            <option value="">Select Time</option>
+            <option>6:00 PM</option>
+            <option>7:00 PM</option>
+            <option>8:00 PM</option>
+            <option>9:00 PM</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="guest">Guests:</label>
+          <select id="guest" name="guest" required>
+            <option value="">Select Guests</option>
+            <option>1 Guest</option>
+            <option>2 Guests</option>
+            <option>3 Guests</option>
+            <option>4 Guests</option>
+            <option>5 Guests</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Special Requests:</label>
+          <textarea id="message" name="message" rows="3"></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <p id="formStatus" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <!-- External Libraries -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script>
+    // ✅ Initialize EmailJS
+    (function () {
+      emailjs.init("j-p8rSz0fIcLzpHLG"); // Replace with your EmailJS Public Key
+    })();
+
+    // ✅ Handle Form Submission
+    document.getElementById("reservationForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const formStatus = document.getElementById("formStatus");
+
+      const templateParams = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        date: document.getElementById("date").value,
+        time: document.getElementById("time").value,
+        guest: document.getElementById("guest").value,
+        message: document.getElementById("message").value,
+      };
+
+      formStatus.textContent = "Sending...";
+      formStatus.style.color = "#333";
+
+      emailjs
+        .send("service_7rj2c0j", "template_otr3z9f", templateParams)
+        .then(
+          function (response) {
+            console.log("SUCCESS!", response.status, response.text);
+            formStatus.textContent = "Reservation submitted successfully! 🎉";
+            formStatus.style.color = "green";
+            document.getElementById("reservationForm").reset();
+          },
+          function (error) {
+            console.log("FAILED...", error);
+            formStatus.textContent = "Oops! Something went wrong. Please try again.";
+            formStatus.style.color = "red";
+          }
+        );
+    });
+  </script>
+
+  <!-- ✅ Load main.js at the END -->
+  <script src="main.js"></script>
+</body>
+</html>

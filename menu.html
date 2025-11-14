@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodMan | Menu</title>
+  <style>
+    :root {
+      --primary-color: #fc7f09;
+      --text-dark: #18181b;
+      --text-light: #6b7280;
+      --white: #ffffff;
+      --bg-color: #fffaf5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 2rem 1rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: #fff3e0;
+    }
+
+    .menu-section {
+      max-width: 1000px;
+      margin: 3rem auto;
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-category {
+      margin-bottom: 2rem;
+    }
+
+    .menu-category h2 {
+      color: var(--primary-color);
+      font-size: 1.8rem;
+      border-bottom: 3px solid var(--primary-color);
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding-bottom: 5px;
+    }
+
+    .menu-subcategory {
+      margin-bottom: 1.5rem;
+    }
+
+    .menu-subcategory h3 {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    ul li {
+      padding: 5px 0;
+      color: var(--text-light);
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    footer {
+      text-align: center;
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-section {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .menu-category h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Our Menu</h1>
+    <p>Enjoy authentic meals made with love and fresh ingredients.</p>
+  </header>
+
+  <section class="menu-section">
+    <div class="menu-category">
+      <h2>Lunch / Dinner</h2>
+
+      <div class="menu-subcategory">
+        <h3>Veg Meals</h3>
+        <ul>
+          <li>Rice</li>
+          <li>Sambar</li>
+          <li>Mathanga Curry</li>
+          <li>Curd Curry</li>
+          <li>Daal Curry</li>
+          <li>Kumbalanga Curry</li>
+        </ul>
+      </div>
+
+      <div class="menu-subcategory">
+        <h3>Toran's</h3>
+        <ul>
+          <li>Cabbage</li>
+          <li>Ladiesfinger</li>
+          <li>Payar</li>
+          <li>Beetroot</li>
+          <li>Potato</li>
+          <li>Avial</li>
+          <li>Kootu</li>
+        </ul>
+      </div>
+
+      <div class="menu-subcategory">
+        <h3>Non-Veg Meals</h3>
+        <ul>
+          <li>Rice</li>
+          <li>Ghee Rice</li>
+          <li>Kebab</li>
+          <li>Fish Curry</li>
+          <li>Chicken Curry</li>
+          <li>Egg Curry</li>
+        </ul>
+      </div>
+
+      <div class="menu-subcategory">
+        <h3>Biriyani</h3>
+        <ul>
+          <li>Chicken Biriyani</li>
+          <li>Fish Biriyani</li>
+          <li>Egg Biriyani</li>
+          <li>Veg Biriyani</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="menu-category">
+      <h2>Breakfast</h2>
+
+      <div class="menu-subcategory">
+        <ul>
+          <li>Appam</li>
+          <li>Egg Roast</li>
+          <li>Idiyappam</li>
+          <li>Green Peas Curry</li>
+          <li>Puttu</li>
+          <li>Kadala Curry</li>
+          <li>Dosa Sambar Chutney</li>
+          <li>Idli Sambar Chutney</li>
+          <li>Chapathi</li>
+          <li>Veg Kurma</li>
+          <li>Puri</li>
+          <li>Potato Curry</li>
+          <li>Pulav</li>
+          <li>Salad</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2024 FoodMan | Crafted with ❤️ for Food Lovers
+  </footer>
+</body>
+</html>
